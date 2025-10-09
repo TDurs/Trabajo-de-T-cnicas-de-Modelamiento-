@@ -21,7 +21,7 @@ layout = html.Div([
             
             # Texto de presentación
             html.Div([
-                html.H2("Hola, soy [Tu Nombre]", className="profile-name"),
+                html.H2("Hola, soy Juan Jose", className="profile-name"),
                 html.P("Desarrollador Python | Científico de Datos | Estudiante de Modelamiento", 
                        className="profile-title"),
                 html.P("""
