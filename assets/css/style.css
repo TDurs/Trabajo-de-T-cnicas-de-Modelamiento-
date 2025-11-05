@@ -408,3 +408,137 @@ li {
 ::-webkit-scrollbar-thumb:hover {
     background: #5A7FB7;
 }
+
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* Apila etiqueta sobre el input */
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    font-weight: 500;
+    color: var(--color-text-light);
+    margin-bottom: 6px;
+    font-size: 0.95em;
+}
+
+.input-field {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1em;
+    padding: 10px 12px;
+    border: 1px solid var(--color-beige);
+    border-radius: 8px;
+    background-color: var(--color-cream);
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-blue);
+    background-color: var(--color-white);
+    box-shadow: 0 0 8px rgba(109, 148, 197, 0.3);
+}
+
+.btn-generar { /* Esta clase la usa tu botón */
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-white);
+    background: var(--color-blue);
+    border: none;
+    border-radius: 25px; /* Redondeado como tus nav-links */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(109, 148, 197, 0.3);
+    margin-top: 15px;
+}
+
+.btn-generar:hover {
+    background: #5A7FB7; /* Color del gradiente del header */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(109, 148, 197, 0.5);
+}
+
+/* Estilos para el panel de info (R0 y Pico) */
+#info-seir h4 {
+    color: var(--color-blue);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#info-seir p {
+    font-size: 1.1em;
+    color: var(--color-text);
+    text-align: center;
+    background-color: var(--color-light-blue);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+
+.rc-slider {
+    flex-grow: 1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Riel (la barra de fondo completa) */
+.rc-slider-rail {
+    background-color: var(--color-beige);
+    height: 8px;
+    border-radius: 4px;
+}
+
+/* Track (la barra azul que marca el valor) */
+.rc-slider-track {
+    background-color: var(--color-blue);
+    height: 8px;
+    border-radius: 4px;
+}
+
+/* Handle (el círculo para arrastrar) */
+.rc-slider-handle {
+    background-color: var(--color-blue);
+    border: 3px solid var(--color-white);
+    height: 20px;
+    width: 20px;
+    margin-top: -6px; /* Centrado vertical */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 1; /* Asegura que sea visible */
+}
+.rc-slider-handle:hover,
+.rc-slider-handle:active,
+.rc-slider-handle:focus-visible {
+    border-color: var(--color-white) !important;
+    box-shadow: 0 0 10px var(--color-blue) !important;
+    outline: none;
+}
+
+/* Tooltip (caja que muestra el valor) */
+.rc-slider-tooltip-inner {
+    background-color: var(--color-dark) !important;
+    color: var(--color-white) !important;
+    box-shadow: none !important;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    padding: 4px 8px !important;
+    border-radius: 4px;
+}
+.rc-slider-tooltip-arrow {
+     border-top-color: var(--color-dark) !important;
+}
+
+/* Ajuste para el Input numérico al lado del slider */
+.input-group .input-field[type="number"] {
+    text-align: right;
+    font-weight: 600;
+    background-color: var(--color-white);
+}
