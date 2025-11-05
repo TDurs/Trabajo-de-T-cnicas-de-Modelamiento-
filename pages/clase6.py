@@ -4,7 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 
-dash.register_page(__name__, path="/clase6", name="clase 6")
+dash.register_page(__name__, path="/pagina6", name="pagina 6")
 app = dash.Dash(__name__)
 
 layout = html.Div([
