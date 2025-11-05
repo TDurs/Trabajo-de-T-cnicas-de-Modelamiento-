@@ -465,7 +465,6 @@ li {
     box-shadow: 0 6px 15px rgba(109, 148, 197, 0.5);
 }
 
-/* Estilos para el panel de info (R0 y Pico) */
 #info-seir h4 {
     color: var(--color-blue);
     font-size: 1.4em;
@@ -489,21 +488,18 @@ li {
     margin-bottom: 5px;
 }
 
-/* Riel (la barra de fondo completa) */
 .rc-slider-rail {
     background-color: var(--color-beige);
     height: 8px;
     border-radius: 4px;
 }
 
-/* Track (la barra azul que marca el valor) */
 .rc-slider-track {
     background-color: var(--color-blue);
     height: 8px;
     border-radius: 4px;
 }
 
-/* Handle (el círculo para arrastrar) */
 .rc-slider-handle {
     background-color: var(--color-blue);
     border: 3px solid var(--color-white);
@@ -521,7 +517,7 @@ li {
     outline: none;
 }
 
-/* Tooltip (caja que muestra el valor) */
+
 .rc-slider-tooltip-inner {
     background-color: var(--color-dark) !important;
     color: var(--color-white) !important;
@@ -536,7 +532,7 @@ li {
      border-top-color: var(--color-dark) !important;
 }
 
-/* Ajuste para el Input numérico al lado del slider */
+
 .input-group .input-field[type="number"] {
     text-align: right;
     font-weight: 600;

@@ -3,7 +3,7 @@ from dash import html, dcc, callback, Input, Output, State
 import numpy as np
 import plotly.graph_objects as go
 
-dash.register_page(__name__, path="/clase5", name="clase 5")
+dash.register_page(__name__, path="/pagina5", name="pagina 5")
 
 layout = html.Div([
     html.Div([

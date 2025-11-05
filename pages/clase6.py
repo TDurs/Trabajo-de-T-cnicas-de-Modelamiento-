@@ -3,10 +3,7 @@ from dash import html, dcc, callback, Input, Output, State
 import numpy as np
 import plotly.graph_objects as go
 
-# --- Puedes registrar esta página si usas Dash multipágina ---
-# dash.register_page(__name__, path="/seir", name="Modelo SEIR")
 
-# --- O ejecutarlo como una app independiente ---
 dash.register_page(__name__, path="/clase6", name="clase 6")
 app = dash.Dash(__name__)
 
@@ -15,7 +12,6 @@ layout = html.Div([
     html.Div([
     html.H2("Simulador de Modelo SEIR", className="title"),
 
-    # --- Grupo de Sliders Interactivos ---
     html.Div([
         html.Label("Tasa de Transmisión (β):"),
         html.Div([ # Contenedor Flex para alinear Slider e Input
@@ -60,7 +56,6 @@ layout = html.Div([
 
     html.Hr(style={'border': 'none', 'borderTop': '1px solid var(--color-beige)', 'margin': '25px 0'}),
 
-    # --- Grupo de Condiciones Iniciales (Inputs normales) ---
     html.Div([
         html.Label("Población Total (N):"),
         dcc.Input(id="input-n-poblacion", type='number', value=1000, className="input-field")
@@ -81,21 +76,21 @@ layout = html.Div([
         dcc.Input(id="input-tmax", type='number', value=150, className="input-field")
     ], className="input-group"),
 
-    # --- Botón (sin cambios) ---
+ 
     html.Button("Simular Modelo", id="btn-simular", className="btn-generar"),
 
 ], className="content left"),
 
-    # --- Panel Derecho (Gráfica e Info) ---
+    
     html.Div([
-        html.H2("Evolución Temporal del Modelo SEIR", className="title"), # <--- Clase de Título
+        html.H2("Evolución Temporal del Modelo SEIR", className="title"), 
         dcc.Graph(id="grafica-seir", style={"height":"450", "width":"100%"}),
 
-        html.Div(id='info-seir') # El CSS que añadimos dará estilo a esto
-    ], className="content right") # <--- Clase de Contenedor
-], className="main-container") # <--- Clase Principal
+        html.Div(id='info-seir') 
+    ], className="content right") 
+], className="main-container") 
 
-# Asignar el layout a la app (si es independiente)
+
 app.layout = layout
 
 # --- Callback para actualizar la gráfica SEIR ---
@@ -119,9 +114,8 @@ app.layout = layout
 
 def actualizar_grafica_seir(n_clicks, N, I0, E0, beta, sigma, gamma, t_max):
     
-    # --- Configuración del Solver (Método de Euler) ---
+
     try:
-        # Forzar tipos numéricos
         N = float(N)
         I0 = float(I0)
         E0 = float(E0)
@@ -130,43 +124,35 @@ def actualizar_grafica_seir(n_clicks, N, I0, E0, beta, sigma, gamma, t_max):
         gamma = float(gamma)
         t_max = int(t_max)
         
-        # Paso de tiempo (1 día)
         dt = 1
         n_steps = t_max
         
-        # Arrays para guardar los resultados
         t = np.linspace(0, t_max, n_steps)
         S = np.zeros(n_steps)
         E = np.zeros(n_steps)
         I = np.zeros(n_steps)
         R = np.zeros(n_steps)
         
-        # Condiciones Iniciales
         S[0] = N - I0 - E0
         E[0] = E0
         I[0] = I0
         R[0] = 0
         
-        # --- Bucle de Simulación (Método de Euler) ---
         for i in range(n_steps - 1):
-            # Evitar valores negativos que pueden surgir del método numérico
             if S[i] < 0: S[i] = 0
             if E[i] < 0: E[i] = 0
             if I[i] < 0: I[i] = 0
             
-            # Ecuaciones Diferenciales del SEIR
             dS_dt = (-beta * I[i] * S[i]) / N
             dE_dt = (beta * I[i] * S[i]) / N - sigma * E[i]
             dI_dt = sigma * E[i] - gamma * I[i]
             dR_dt = gamma * I[i]
             
-            # Actualizar el siguiente paso de tiempo
             S[i+1] = S[i] + dS_dt * dt
             E[i+1] = E[i] + dE_dt * dt
             I[i+1] = I[i] + dI_dt * dt
             R[i+1] = R[i] + dR_dt * dt
             
-        # --- Cálculo de Información Adicional ---
         R0 = 0
         if gamma > 0:
             R0 = beta / gamma
@@ -179,7 +165,6 @@ def actualizar_grafica_seir(n_clicks, N, I0, E0, beta, sigma, gamma, t_max):
             html.P(f"Pico de infectados (max(I)): {peak_I:.0f} personas (Día {peak_day:.0f})")
         ]
 
-        # --- Creación de la Gráfica ---
         fig = go.Figure()
         
         fig.add_trace(go.Scatter(
@@ -195,7 +180,6 @@ def actualizar_grafica_seir(n_clicks, N, I0, E0, beta, sigma, gamma, t_max):
             x=t, y=R, mode='lines', name='Recuperados (R)', line=dict(color='green')
         ))
         
-        # --- Estilo de la Gráfica (tomado de tu referencia) ---
         fig.update_layout(
             title=dict(
                 text=f"<b>Simulación SEIR (N={N:.0f}, R₀={R0:.2f})</b>",
@@ -216,7 +200,7 @@ def actualizar_grafica_seir(n_clicks, N, I0, E0, beta, sigma, gamma, t_max):
         fig.update_yaxes(
             showgrid=True, gridwidth=1, gridcolor='Lightpink',
             zeroline=True, zerolinewidth=2, zerolinecolor='red',
-            range=[0, N * 1.1] # Rango Y basado en la población total
+            range=[0, N * 1.1] 
         )
         
         return fig, info_mensajes
@@ -227,6 +211,5 @@ def actualizar_grafica_seir(n_clicks, N, I0, E0, beta, sigma, gamma, t_max):
     
 
 
-# --- Para ejecutar la app de forma independiente ---
 if __name__ == '__main__':
     app.run_server(debug=True)
