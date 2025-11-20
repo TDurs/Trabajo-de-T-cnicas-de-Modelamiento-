@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from scipy.integrate import solve_ivp # Intallar pip install scipy
 
 
-dash.register_page(__name__, path="/pagina4", name="pagina 4")
+dash.register_page(__name__, path="/tarea2", name="Tarea 2", order=4)
 
 # Función para el modelo de Lotka-Volterra
 def lotka_volterra(t, Z, a, b, c, d):

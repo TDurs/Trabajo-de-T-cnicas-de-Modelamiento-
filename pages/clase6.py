@@ -4,8 +4,8 @@ import numpy as np
 import plotly.graph_objects as go
 
 
-dash.register_page(__name__, path="/pagina6", name="pagina 6")
-app = dash.Dash(__name__)
+dash.register_page(__name__, path="/tarea3", name="Tarea 3", order=6)
+
 
 layout = html.Div([
     # --- Panel Izquierdo (Controles) ---
@@ -91,7 +91,6 @@ layout = html.Div([
 ], className="main-container") 
 
 
-app.layout = layout
 
 # --- Callback para actualizar la gráfica SEIR ---
 @callback(

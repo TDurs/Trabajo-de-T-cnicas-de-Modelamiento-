@@ -50,7 +50,7 @@ fig.update_layout(
 
 #############################################
 
-dash.register_page(__name__, path="/pagina1", name="pagina 1")
+dash.register_page(__name__, path="/pagina1", name="pagina 1", order=1)
 
 layout = html.Div(children=[
     # Contenedor Principal que contiene izquierdo y derecho

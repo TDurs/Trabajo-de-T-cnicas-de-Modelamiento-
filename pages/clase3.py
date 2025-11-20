@@ -3,7 +3,7 @@ from dash import html, dcc
 import plotly.graph_objects as go
 import numpy as np
 
-dash.register_page(__name__, path="/pagina3", name="pagina 3")
+dash.register_page(__name__, path="/tarea1", name="Tarea 1",order=2)
 
 # Datos para los gráficos (ejemplo - puedes ajustar con tus datos reales)
 # Gráfico 1: Modelo Lotka-Volterra simple

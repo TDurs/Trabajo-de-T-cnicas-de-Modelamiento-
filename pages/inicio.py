@@ -1,7 +1,7 @@
 import dash
 from dash import html, dcc
 
-dash.register_page(__name__, path="/", name="Inicio")
+dash.register_page(__name__, path="/", name="Inicio",order=0)
 
 layout = html.Div([
     html.H1("Bienvenido a Mi Portafolio", className="app-header"),
